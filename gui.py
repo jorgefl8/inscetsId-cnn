@@ -50,7 +50,7 @@ def run_classification(file_path):
     except subprocess.CalledProcessError as e:
         messagebox.showerror("Error", f"Error en la clasificación: {e}")
     finally:
-        loading_label.grid_forget()  # Use grid_forget() instead of pack_forget()
+        loading_label.grid_forget()  
         train_button.config(state=tk.NORMAL)  # Reactivar el botón
         classify_button.config(state=tk.NORMAL)  # Reactivar el botón
         display_image(file_path)  # Muestra la imagen seleccionada
@@ -61,14 +61,14 @@ def display_image(path):
     img = ImageTk.PhotoImage(img)
     image_label.config(image=img)
     image_label.image = img  # Guarda una referencia
-    image_label.grid(row=4, column=0, columnspan=2)  # Ajusta la fila y columna según sea necesario
+    image_label.grid(row=4, column=0, columnspan=2)  
 
 def classify_image():
     train_button.config(state=tk.DISABLED)  # Desactivar el botón
     classify_button.config(state=tk.DISABLED)  # Desactivar el botón
     file_path = filedialog.askopenfilename()
     if file_path:
-        loading_label.grid(row=3, column=0, columnspan=2, pady=5)  # Adjust row and column as needed
+        loading_label.grid(row=3, column=0, columnspan=2, pady=5) 
         threading.Thread(target=lambda: run_classification(file_path), daemon=True).start()
 
 root = tk.Tk()
@@ -77,7 +77,7 @@ root.geometry("400x300")
 
 title_font = font.Font(family="Helvetica", size=16, weight="bold")
 title_label = tk.Label(root, text="Insect Recognition", font=title_font)
-title_label.grid(row=0, column=0, pady=10, columnspan=2)  # Alineación al norte, sur, este y oeste
+title_label.grid(row=0, column=0, pady=10, columnspan=2)
 
 loading_image = tk.PhotoImage(file='loading.gif')
 loading_label = tk.Label(root, image=loading_image)
@@ -86,7 +86,7 @@ image_label.grid(row=4, column=0, columnspan=2)
 
 # Configurar los botones en la parte superior y centrados
 button_width = 20
-button_height = 2  # Ajusta este valor para cambiar la altura de los botones
+button_height = 2  
 
 train_button = tk.Button(root, text="Entrenar Modelo", command=train_model, width=button_width, height=button_height)
 train_button.grid(row=1, column=0, pady=5, padx=5, sticky="e")  # Alineación a la derecha
@@ -103,7 +103,7 @@ num_epochs_entry = tk.Entry(root)
 num_epochs_entry.grid(row=2, column=1, pady=5, padx=5, sticky="w")  # Alineación a la izquierda
 
 result_label = tk.Label(root, textvariable=classification_result)
-result_label.grid(row=3, column=0, columnspan=2, sticky="nsew")  # Alineación al norte, sur, este y oeste
+result_label.grid(row=3, column=0, columnspan=2, sticky="nsew")  
 
 # Configurar el peso de las filas y columnas para que se expandan y centren los elementos
 root.grid_rowconfigure(0, weight=1)
