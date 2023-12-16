@@ -188,4 +188,4 @@ test = tf.keras.utils.image_dataset_from_directory(
 
 # Evaluamos el rendimiento del modelo con el conjunto de prueba
 test_loss,test_acc = cnn.evaluate(test) #Devuelve la tupla con la perdida y la precision calculada sobre el conjunto de prueba
-print('Test accuracy:', test_acc) # Imprimimos el nivel de precision
+print("Test set Accuracy: {} %".format(test_acc*100))
