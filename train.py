@@ -148,25 +148,20 @@ training_history = cnn.fit(x=training_set,validation_data=validation_set,epochs=
 
 # Evaluamos el rendimiento del modelo con el conjunto de entrenamiento y validación
 train_loss, train_acc = cnn.evaluate(training_set)
-print('Training accuracy:', train_acc) # se imprime el nivel de precision
+print("Training set Accuracy: {} %".format(train_acc*100))
 val_loss, val_acc = cnn.evaluate(validation_set)
-print('Validation accuracy:', val_acc)
+print("Validation set Accuracy: {} %".format(val_acc*100))
 
-# Guardamos el modelo entrenado en un archivo
+# Guardamos el modelo entrenado 
 cnn.save('./models/trained_model_insects.keras')
 
-# Devuelve el historial de entrenamiento con informacion sobre la perdida y la precision en cada epoca
-training_history.history 
-
-# Imprime la precision final del modelo despues de todas las epochs, en porcentaje
-print("Validation set Accuracy: {} %".format(training_history.history['val_accuracy'][-1]*100))
 
 
 # Creamos una grafica para visualizar la precision del conjunto de entrenamiento
 epochs = [i for i in range(1, len(training_history.history['accuracy']) + 1)]
 plt.plot(epochs,training_history.history['accuracy'],color='red')
 plt.xlabel('Number of Epochs')
-plt.ylabel('Traiining Accuracy')
+plt.ylabel('Training Accuracy')
 plt.title('Visualization of Training Accuracy Result')
 plt.savefig('./charts/accuracytraining.png')
 #plt.show()
@@ -180,7 +175,7 @@ plt.savefig('./charts/accuracyvalidation.png')
 #plt.show()
 
 # Cargamos y preprocesamos las imágenes directamente desde un directorio
-test_x = tf.keras.utils.image_dataset_from_directory( 
+test = tf.keras.utils.image_dataset_from_directory( 
     './kaggle/insects/test', #ruta directorio con las imágenes
     labels="inferred", #las etiquetas tomadas de la estructura del subdirectorio
     label_mode="categorical", #definimos que las etiquetas son categorias
@@ -192,5 +187,5 @@ test_x = tf.keras.utils.image_dataset_from_directory(
 )
 
 # Evaluamos el rendimiento del modelo con el conjunto de prueba
-test_loss,test_acc = cnn.evaluate(test_x) #Devuelve la tupla con la perdida y la precision calculada sobre el conjunto de prueba
+test_loss,test_acc = cnn.evaluate(test) #Devuelve la tupla con la perdida y la precision calculada sobre el conjunto de prueba
 print('Test accuracy:', test_acc) # Imprimimos el nivel de precision

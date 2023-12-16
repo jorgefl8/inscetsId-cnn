@@ -45,6 +45,8 @@ def run_classification(file_path):
         result = subprocess.run(['python', 'display.py', file_path], check=True, text=True, capture_output=True, encoding='utf-8')
         output_lines = result.stdout.strip().split('\n')
         last_line = output_lines[-1]
+        display_image(file_path)  # Muestra la imagen seleccionada
+        result_label.grid(row=6, column=0, columnspan=2)  #
         classification_result.set(last_line)
 
     except subprocess.CalledProcessError as e:
@@ -61,7 +63,7 @@ def display_image(path):
     img = ImageTk.PhotoImage(img)
     image_label.config(image=img)
     image_label.image = img  # Guarda una referencia
-    image_label.grid(row=4, column=0, columnspan=2)  
+    image_label.grid(row=5, column=0, columnspan=2)  # Modificar la fila a 5
 
 def classify_image():
     train_button.config(state=tk.DISABLED)  # Desactivar el botón
