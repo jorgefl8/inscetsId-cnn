@@ -113,7 +113,7 @@ cnn.add(tf.keras.layers.Conv2D(filters=32,kernel_size=3,activation='relu'))
 cnn.add(tf.keras.layers.MaxPool2D(pool_size=2,strides=2))
 # tecnica para regular el sobreajuste durante el entrenamiento apaga aleatoriamente un porcentaje
 # de unidades durante el entrenamiento, y evita que aprenda demasiado ciertas características 
-cnn.add(tf.keras.layers.Dropout(0.25))
+cnn.add(tf.keras.layers.Dropout(0.3))
 # Agrega una capa de convolución con 64 filtros, cada kernel de 3x3, relleno 'same' (mismas dimensiones) 
 # y función de activación ReLU.
 cnn.add(tf.keras.layers.Conv2D(filters=64,kernel_size=3,padding='same',activation='relu'))
@@ -122,14 +122,12 @@ cnn.add(tf.keras.layers.Conv2D(filters=64,kernel_size=3,activation='relu'))
 # Capa MaxPool2D con max pooling 2x2 y stride 2
 cnn.add(tf.keras.layers.MaxPool2D(pool_size=2,strides=2))
 # Agregamos otra capa de dropout con tasa 0.25
-cnn.add(tf.keras.layers.Dropout(0.25))
+cnn.add(tf.keras.layers.Dropout(0.3))
 # Agregamos capa de aplanamiento para convertir los mapas de características 2D en un vector 1D
 cnn.add(tf.keras.layers.Flatten())
-# Agregamos una capa densa (totalmente conectada) con 512 neuronas y función de activación ReLU
-# estas capas realizan operaciones de matriz-vector y se utilizan para aprender patrones complejos en los datos
-cnn.add(tf.keras.layers.Dense(units=512,activation='relu'))
-# Agregamos otra capa Densa con 256 y ReLU
-cnn.add(tf.keras.layers.Dense(units=256,activation='relu'))
+regularizer = tf.keras.regularizers.l2(0.001)  # Regularización L2
+cnn.add(tf.keras.layers.Dense(units=256, activation='relu', kernel_regularizer=regularizer))  # Reducción de neuronas a 256 y regularización
+
 # Agregamos otra capa de Dropout final con tasa 0.5 - prevenir sobreajuste
 cnn.add(tf.keras.layers.Dropout(0.5)) 
      

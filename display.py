@@ -27,11 +27,11 @@ test_set = tf.keras.utils.image_dataset_from_directory(
 cnn = tf.keras.models.load_model('./models/trained_model_insects.keras')
 
 
-#image_path = './kaggle/insects/test/Butterfly/google0.jpg'
+#image_path = './mari.jpg'
 image_path = args.image_path
 
 img = cv2.imread(image_path) #Lee la imagen de prueba en formato BGR(default)
-img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB) #lo conviertimos a formato RGB
+img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB) #lo convertimos a formato RGB
 
 # Mostramos la imagen de prueba
 plt.imshow(img)
