@@ -5,6 +5,6 @@
    - [María Luisa Rodríguez Cabrera](https://github.com/marrodcab12)
      
 -**Dataset utilizado**
-   - https://www.kaggle.com/datasets/hammaadali/insects-recognition/data?select=Ladybird
+   - https://www.kaggle.com/datasets/hammaadali/insects-recognition/data
      
   
