@@ -41,6 +41,7 @@ def run_training(epochs):
 
 def run_classification(file_path):
     try:
+        hide_image()
         loading_label.grid(row=4, column=0, columnspan=2, pady=5)  # Mostrar el icono de carga
         result = subprocess.run(['python', 'display.py', file_path], check=True, text=True, capture_output=True, encoding='utf-8')
         output_lines = result.stdout.strip().split('\n')
