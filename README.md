@@ -15,5 +15,4 @@
   1. Instalar las dependencias requeridas mediante `pip install`.
   2. Descargar el dataset y dividir las imágenes por carpetas. Colocar el 80% de las imágenes en `./kaggle/insects/train`, y un 10% en `./kaggle/insects/validation` y `./kaggle/insects/test`. Y a su vez cada carpeta deberá tener una con cada categoría, quedará de este modo: ![image](https://github.com/jorgefl8/MATI-TRABAJO/assets/124601548/c73c8505-d726-4f66-ace6-446247779ed7)
   3. Ejecutar el script con su debido editor e ingresar en la interfaz los requerimientos. 
-
-
+![image](https://github.com/jorgefl8/inscetsId-cnn/assets/124601548/d92d6a70-6081-4b27-8129-bd720baadf59)
